@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["Nazirov", "tsyringe", "Umzug"],
+  "cSpell.words": ["Nazirov", "TIMESTAMPTZ", "tsyringe", "Umzug"],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   }

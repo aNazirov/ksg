@@ -1,15 +1,15 @@
 import { Router } from "express";
 import { Modules } from "src/config";
 import { Controllers } from "src/controllers";
-import { SequelizeInstance } from "src/db";
+import { Database } from "src/db";
 import { Services } from "src/services";
 import { container, Lifecycle } from "tsyringe";
 
 const router = Router();
 
 container.register(
-  Modules.Sequelize,
-  { useClass: SequelizeInstance },
+  Modules.Database,
+  { useClass: Database },
   { lifecycle: Lifecycle.Singleton }
 );
 container.register(Modules.Services.User, { useClass: Services.User });

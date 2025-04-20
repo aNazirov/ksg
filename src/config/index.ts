@@ -17,7 +17,7 @@ export const AppConfig: Types.AppConfig = {
 };
 
 export const Modules = {
-  Sequelize: Symbol("SequelizeInstance"),
+  Database: Symbol("Database"),
   Services: { User: Symbol("Services.User") },
   Controllers: { User: Symbol("Controllers.User") },
 } as const;

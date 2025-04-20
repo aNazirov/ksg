@@ -1,17 +1,17 @@
 import cluster from "node:cluster";
 import * as os from "os";
 import "reflect-metadata";
-import { Sequelize } from "sequelize";
 import { container } from "tsyringe";
 import app from "./app";
 import { AppConfig, Modules } from "./config";
-import { SequelizeInstance } from "./db";
+import { Database } from "./db";
 import { Utils } from "./utils";
+import Pg from 'pg'
 
-const cleanup = async (sequelize: Sequelize) => {
+const cleanup = async (client: Pg.Client) => {
   console.log("Cleaning up...");
 
-  await sequelize.close();
+  await client.end();
   console.log("Database has been disconnected");
 
   console.log("Cleanup done");
@@ -31,17 +31,15 @@ const main = async () => {
       cluster.fork();
     });
   } else {
-    const sequelize = container.resolve<SequelizeInstance>(Modules.Sequelize);
+    const database = container.resolve<Database>(Modules.Database);
 
     console.log(`Checking database connection...`);
 
-    await sequelize.client.authenticate();
+    await database.client.connect();
 
     console.log("Database is connected");
 
-    Utils.setupGracefulShutdown(() => cleanup(sequelize.client));
-
-    await sequelize.client.sync();
+    Utils.setupGracefulShutdown(() => cleanup(database.client));
 
     app.listen(AppConfig.PORT, () => {
       console.log(

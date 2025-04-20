@@ -1,4 +1,3 @@
-import { User, initUser } from "./models";
+import { User } from "./models";
 
-export const Models = { User, initUser };
-export type Models = { User: typeof User };
+export type Models = { User: User };
