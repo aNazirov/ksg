@@ -1,12 +1,12 @@
 import cluster from "node:cluster";
 import * as os from "os";
+import Pg from "pg";
 import "reflect-metadata";
 import { container } from "tsyringe";
 import app from "./app";
 import { AppConfig, Modules } from "./config";
 import { Database } from "./db";
 import { Utils } from "./utils";
-import Pg from 'pg'
 
 const cleanup = async (client: Pg.Client) => {
   console.log("Cleaning up...");

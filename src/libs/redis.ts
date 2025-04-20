@@ -16,5 +16,7 @@ export class Client {
     });
 
     this.client = redis;
+
+    console.log(`Redis has been initialized`);
   }
 }
