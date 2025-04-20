@@ -1,3 +1,4 @@
+export * from "./cache";
 export * from "./custom-error";
 export * from "./error-handlers";
 export * from "./logger";

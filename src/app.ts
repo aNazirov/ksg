@@ -10,6 +10,7 @@ app.use(morgan("dev"));
 app.use(Utils.logRequestTime);
 
 app.use("/users", Routers.User);
+app.use("/items", Routers.Item);
 
 app.use(Utils.logErrors);
 app.use(Utils.errorHandler);

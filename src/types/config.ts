@@ -6,7 +6,17 @@ type DATABASE = {
   PORT: number;
 };
 
+type REDIS = {
+  PASSWORD: string;
+  USERNAME: string;
+  DB: number;
+  HOST: string;
+  PORT: number;
+};
+
+
 export type AppConfig = {
   PORT: number;
+  REDIS: REDIS;
   DATABASE: DATABASE;
 };
