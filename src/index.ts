@@ -18,6 +18,24 @@ const cleanup = async (client: Pg.Client) => {
 };
 
 const main = async () => {
+  const database = container.resolve<Database>(Modules.Database);
+
+  console.log(`Checking database connection...`);
+
+  await database.client.connect();
+
+  console.log("Database is connected");
+
+  Utils.setupGracefulShutdown(() => cleanup(database.client));
+
+  app.listen(AppConfig.PORT, () => {
+    console.log(
+      `🚀 Core server ready on dev mode at: ${os.hostname()}:${AppConfig.PORT}`
+    );
+  });
+
+  return;
+
   const numCPUs = os.cpus().length;
 
   console.log(numCPUs, process.env.UV_THREADPOOL_SIZE);

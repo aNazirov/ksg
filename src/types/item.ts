@@ -12,3 +12,7 @@ export interface Item {
   created_at: number;
   updated_at: number;
 }
+
+export interface ItemWithTradableMinPrice extends Item {
+  tradable_min_price?: number;
+}

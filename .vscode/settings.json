@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["Nazirov", "SKINPORT", "TIMESTAMPTZ", "tsyringe", "Umzug"],
+  "cSpell.words": [
+    "Nazirov",
+    "SKINPORT",
+    "TIMESTAMPTZ",
+    "tsyringe",
+    "Umzug",
+    "untradable"
+  ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   }
